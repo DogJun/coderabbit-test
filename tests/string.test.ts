@@ -8,7 +8,8 @@ import {
   reverse,
   isPalindrome,
   countOccurrences,
-  randomString
+  randomString,
+  isEmpty
 } from '../src/string'
 
 describe('string utils', () => {
@@ -133,6 +134,69 @@ describe('string utils', () => {
 
     it('长度为0应该返回空字符串', () => {
       expect(randomString(0)).toBe('')
+    })
+  })
+
+  describe('isEmpty', () => {
+    it('应该对空字符串返回true', () => {
+      expect(isEmpty('')).toBe(true)
+    })
+
+    it('应该对null返回true', () => {
+      expect(isEmpty(null)).toBe(true)
+    })
+
+    it('应该对undefined返回true', () => {
+      expect(isEmpty(undefined)).toBe(true)
+    })
+
+    it('应该对非空字符串返回false', () => {
+      expect(isEmpty('hello')).toBe(false)
+    })
+
+    it('应该对单个字符返回false', () => {
+      expect(isEmpty('a')).toBe(false)
+    })
+
+    it('应该对只有空格的字符串返回false', () => {
+      expect(isEmpty(' ')).toBe(false)
+      expect(isEmpty('   ')).toBe(false)
+    })
+
+    it('应该对只有制表符的字符串返回false', () => {
+      expect(isEmpty('\t')).toBe(false)
+    })
+
+    it('应该对只有换行符的字符串返回false', () => {
+      expect(isEmpty('\n')).toBe(false)
+    })
+
+    it('应该对包含空白字符的字符串返回false', () => {
+      expect(isEmpty(' hello ')).toBe(false)
+    })
+
+    it('应该对数字字符串返回false', () => {
+      expect(isEmpty('0')).toBe(false)
+      expect(isEmpty('123')).toBe(false)
+    })
+
+    it('应该对特殊字符返回false', () => {
+      expect(isEmpty('!')).toBe(false)
+      expect(isEmpty('@#$')).toBe(false)
+    })
+
+    it('应该对布尔值字符串返回false', () => {
+      expect(isEmpty('false')).toBe(false)
+      expect(isEmpty('true')).toBe(false)
+    })
+
+    it('应该对Unicode字符返回false', () => {
+      expect(isEmpty('你好')).toBe(false)
+      expect(isEmpty('🎉')).toBe(false)
+    })
+
+    it('应该对零宽字符返回false', () => {
+      expect(isEmpty('\u200B')).toBe(false) // 零宽空格
     })
   })
 })
