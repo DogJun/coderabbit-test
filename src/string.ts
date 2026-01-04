@@ -81,3 +81,7 @@ export function randomString(length: number, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ
   return result
 }
 
+export function isEmpty(str: string | null | undefined): boolean {
+  return !str
+}
+
