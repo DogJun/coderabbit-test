@@ -71,7 +71,11 @@ export function countOccurrences(str: string, substring: string): number {
 }
 
 /**
- * 生成随机字符串
+ * Create a random string of the specified length using characters from a given set.
+ *
+ * @param length - The number of characters to generate
+ * @param chars - The character set to draw from; defaults to uppercase and lowercase letters plus digits
+ * @returns A string of `length` characters composed of characters from `chars`
  */
 export function randomString(length: number, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'): string {
   let result = ''
@@ -81,7 +85,12 @@ export function randomString(length: number, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ
   return result
 }
 
+/**
+ * Determines whether a string is empty, `null`, or `undefined`.
+ *
+ * @param str - The string to check; may be `null` or `undefined`
+ * @returns `true` if `str` is `''`, `null`, or `undefined`, `false` otherwise
+ */
 export function isEmpty(str: string | null | undefined): boolean {
   return !str
 }
-
